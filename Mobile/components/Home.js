@@ -1,10 +1,27 @@
-import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, Image, ScrollView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ScrollView, View, Text, StyleSheet } from 'react-native';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebaseConfig';
 
-export default function Home() {
+export default function HomeScreen() {
+  const [animais, setAnimais] = useState([]);
+
+  useEffect(() => {
+    async function fetchAnimais() {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'animais'));
+        const data = querySnapshot.docs.map(doc => doc.data());
+        setAnimais(data);
+      } catch (error) {
+        console.error("Erro ao buscar animais:", error);
+      }
+    }
+
+    fetchAnimais();
+  }, []);
+
   return (
     <ScrollView style={styles.body}>
-
       <View style={styles.header}>
         <Text style={styles.header__title}>Home</Text>
       </View>
@@ -13,26 +30,15 @@ export default function Home() {
         <Text style={styles.main__title}>Animais Cadastrados</Text>
 
         <View style={styles.main__content}>
-          <View style={styles.content__animalBox}>
-            <Text style={styles.animalBox__tipo}>Dog</Text>
-            <Text style={styles.animalBox__raca}>Raça: Labrador</Text>
-            <Text style={styles.animalBox__idade}>Idade: 5</Text>
-          </View>
-          <View style={styles.content__animalBox}>
-            <Text style={styles.animalBox__tipo}>Dog</Text>
-            <Text style={styles.animalBox__raca}>Raça: Labrador</Text>
-            <Text style={styles.animalBox__idade}>Idade: 5</Text>
-          </View>
-          <View style={styles.content__animalBox}>
-            <Text style={styles.animalBox__tipo}>Dog</Text>
-            <Text style={styles.animalBox__raca}>Raça: Labrador</Text>
-            <Text style={styles.animalBox__idade}>Idade: 5</Text>
-          </View>
-
+          {animais.map((animal, index) => (
+            <View style={styles.content__animalBox} key={index}>
+              <Text style={styles.animalBox__tipo}>{animal.tipo}</Text>
+              <Text style={styles.animalBox__raca}>Raça: {animal.raca}</Text>
+              <Text style={styles.animalBox__idade}>Idade: {animal.idade}</Text>
+            </View>
+          ))}
         </View>
-
       </View>
-
     </ScrollView>
   );
 }
