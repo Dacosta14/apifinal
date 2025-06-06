@@ -132,9 +132,10 @@
     <div class="grid-perfis">
         @foreach ($perfil as $p)
             <div class="perfil-content">
-                <div class="perfil-foto">
-                    <img src="{{ $p->foto ? asset('storage/' . $p->foto) : 'https://via.placeholder.com/150' }}" alt="Foto de {{ $p->nome }}">
-                </div>
+              <div class="perfil-foto">
+    <img src="{{ $p->foto ? asset('storage/fotos/' . $p->foto) : 'https://via.placeholder.com/150' }}" alt="Foto de {{ $p->nome }}">
+</div>
+
 
                 <div class="perfil-info">
                     <div class="perfil-info-box">
@@ -163,7 +164,7 @@
                         <form action="{{ route('perfil.destroy', $p->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" onclick="return confirm('Tem certeza?')">Excluir</button>
+                            <button type="submit" onclick="return confirm('Tem certeza?')">Logout</button>
                         </form>
                     </div>
                 </div>

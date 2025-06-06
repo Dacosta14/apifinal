@@ -2,17 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Perfil extends Model
 {
-    use HasFactory;
-
-    // 🏗️ Força o Laravel a usar o nome correto da sua tabela
+    // Corrige o nome da tabela
     protected $table = 'perfis';
 
-    // 🏗️ Lista dos campos que podem ser preenchidos
     protected $fillable = [
         'foto',
         'nome',
@@ -22,4 +18,11 @@ class Perfil extends Model
         'supervisor',
         'grupos',
     ];
+
+    protected $appends = ['foto_url'];
+
+    public function getFotoUrlAttribute()
+    {
+        return $this->foto ? url('fotos/' . $this->foto) : null;
+    }
 }

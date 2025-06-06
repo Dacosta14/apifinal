@@ -8,14 +8,15 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('animal', function (Blueprint $table) {
-            $table->id();
-            $table->string('tipo', 15);
-            $table->string('raca', 20);
-            $table->string('nome', 20);
-            $table->integer('idade');
-            $table->timestamps();
-        });
+       Schema::create('animal', function (Blueprint $table) {
+    $table->id();
+    $table->string('nome');
+    $table->string('tipo');
+    $table->string('raca');
+    $table->integer('idade');
+    $table->timestamps(); // <- esta linha adiciona created_at e updated_at
+});
+
     }
 
     public function down()
