@@ -4,6 +4,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Home from './Home';
 import Profile from './Profile';
+import Login from './Login';
 
 const Tab = createBottomTabNavigator();
 
@@ -25,6 +26,7 @@ export default function Routes() {
           ),
         }}
       />
+
       <Tab.Screen
         name="Profile"
         component={Profile}
@@ -33,6 +35,16 @@ export default function Routes() {
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />
           ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Login"
+        component={Login}
+        options={{
+          // Para nao aparecer embaixo
+          tabBarStyle: { display: 'none' },
+          tabBarButton: () => null,
         }}
       />
     </Tab.Navigator>

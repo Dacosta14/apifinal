@@ -21,6 +21,9 @@ export default function Profile() {
             <Text style={styles.main__textInfos}>Nome: Darlan</Text>
             <Text style={styles.main__textInfos}>Data de nascimento: 08/12/2000</Text>
             <Text style={styles.main__textInfos}>Departamento: 11</Text>
+            <TouchableOpacity style={styles.main__buttonEditar}>
+              <Text style={styles.button__text}>Editar</Text>
+            </TouchableOpacity>
           </View>
             <TouchableOpacity style={styles.main__button}>
               <Text style={styles.button__text}>Sair</Text>
@@ -95,6 +98,15 @@ const styles = StyleSheet.create({
   main__textInfos: {
     fontSize: 17,
     color: "#FFFFFF",
+  },
+  main__buttonEditar: {
+    marginTop: 20,
+    alignItems: "center",
+    width: 70,
+    justifyContent: "center",
+    boxShadow: '0px 0px 6px 0px #08BDFE',
+    borderRadius: 5,
+    height: 30,
   },
   main__button: {
     position: "absolute",
