@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, TextInput, View, Image, ScrollView } from 'react-native';
 
-export default function Cadastroanimais() {
-  const [nome, setNome] = useState('');
-  const [especie, setEspecie] = useState('');
-  const [raca, setRaca] = useState('');
-  const [idade, setIdade] = useState('');
+export default function Editaranimal() {
+  const [nome, setNome] = useState('mocado');
+  const [especie, setEspecie] = useState('mocado');
+  const [raca, setRaca] = useState('mocado');
+  const [idade, setIdade] = useState('mocado');
   
   return (
     <ScrollView style={styles.body}>
       <View style={styles.header}>
-        <Text style={styles.header__title}>Cadastro de Animal</Text>
+        <Text style={styles.header__title}>Editar Animal</Text>
       </View>
     
       <View style={styles.main}> 
@@ -49,7 +49,7 @@ export default function Cadastroanimais() {
           />
 
           <TouchableOpacity style={styles.main__button}>
-            <Text style={styles.button__text}>Cadastrar animal</Text>
+            <Text style={styles.button__text}>Editar animal</Text>
           </TouchableOpacity>
         </View>
       </View>

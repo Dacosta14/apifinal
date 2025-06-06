@@ -6,6 +6,7 @@ import Home from './Home';
 import Profile from './Profile';
 import Cadastroanimais from './Cadastroanimais';
 import Login from './Login';
+import Editaranimal from './Editaranimal';
 
 const Tab = createBottomTabNavigator();
 
@@ -44,6 +45,17 @@ export default function Routes() {
         component={Cadastroanimais}
         options={{
           tabBarLabel: 'Cadastroanimais',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="account" color={color} size={size} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Editaranimal"
+        component={Editaranimal}
+        options={{
+          tabBarLabel: 'Editaranimal',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />
           ),
