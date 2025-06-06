@@ -4,6 +4,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Home from './Home';
 import Profile from './Profile';
+import Cadastroanimais from './Cadastroanimais';
 import Login from './Login';
 
 const Tab = createBottomTabNavigator();
@@ -32,6 +33,17 @@ export default function Routes() {
         component={Profile}
         options={{
           tabBarLabel: 'Profile',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="account" color={color} size={size} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Cadastroanimais"
+        component={Cadastroanimais}
+        options={{
+          tabBarLabel: 'Cadastroanimais',
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />
           ),
