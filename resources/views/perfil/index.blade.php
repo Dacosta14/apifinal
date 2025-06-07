@@ -147,14 +147,8 @@
                         <h2>Informações Gerais</h2>
                         <p><strong>Nome:</strong> {{ $p->nome }}</p>
                         <p><strong>Data de nascimento:</strong> {{ $p->data_nascimento }}</p>
-                        <p><strong>Departamento:</strong> {{ $p->departamento }}</p>
-                        <p><strong>Supervisor:</strong> {{ $p->supervisor }}</p>
                     </div>
 
-                    <div class="perfil-info-box">
-                        <h2>Informações Adicionais</h2>
-                        <p><strong>Grupos:</strong> {{ $p->grupos }}</p>
-                    </div>
 
                     <div class="perfil-actions">
                         <a href="{{ route('perfil.edit', $p->id) }}">

@@ -13,9 +13,7 @@ public function up(): void
         $table->string('nome');
         $table->string('email')->unique();
         $table->date('data_nascimento')->nullable();
-        $table->string('departamento')->nullable();
-        $table->string('supervisor')->nullable();
-        $table->string('grupos')->nullable();
+
         $table->timestamps();
     });
 }

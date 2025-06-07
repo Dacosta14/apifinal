@@ -102,14 +102,6 @@
     <label for="data_nascimento">Data de Nascimento:</label>
     <input type="date" name="data_nascimento" id="data_nascimento" value="{{ old('data_nascimento') }}">
 
-    <label for="departamento">Departamento:</label>
-    <input type="text" name="departamento" id="departamento" value="{{ old('departamento') }}">
-
-    <label for="supervisor">Supervisor:</label>
-    <input type="text" name="supervisor" id="supervisor" value="{{ old('supervisor') }}">
-
-    <label for="grupos">Grupos:</label>
-    <input type="text" name="grupos" id="grupos" value="{{ old('grupos') }}">
 
     <button type="submit">Salvar</button>
 </form>
