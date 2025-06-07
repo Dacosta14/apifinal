@@ -1,34 +1,70 @@
-import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, Image, ScrollView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, Image, Button, StyleSheet, ActivityIndicator, Alert } from 'react-native';
 
-export default function Profile() {
+import { auth, db } from '../firebaseConfig';
+import { doc, getDoc } from 'firebase/firestore';
+import { signOut } from 'firebase/auth';
+
+export default function Profile({ navigation }) {
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadUser() {
+      try {
+        const user = auth.currentUser;
+        if (!user) {
+          navigation.replace('Login');
+          return;
+        }
+
+        const userDoc = await getDoc(doc(db, 'users', user.uid));
+        if (userDoc.exists()) {
+          setUserData(userDoc.data());
+        } else {
+          Alert.alert('Erro', 'Dados do usuário não encontrados.');
+        }
+      } catch (error) {
+        Alert.alert('Erro', error.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadUser();
+  }, []);
+
+  async function sair() {
+    try {
+      await signOut(auth);
+      navigation.replace('Login');
+    } catch (error) {
+      Alert.alert('Erro', error.message);
+    }
+  }
+
+  if (loading) {
+    return <ActivityIndicator style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} size="large" />;
+  }
+
+  if (!userData) {
+    return (
+      <View style={styles.container}>
+        <Text>Usuário não encontrado</Text>
+      </View>
+    );
+  }
+
   return (
-    <ScrollView style={styles.body}>
-      <View style={styles.header}>
-        <Text style={styles.header__title}>Profile</Text>
-      </View>
-    
-      <View style={styles.main}> 
-        <View style={styles.main__content}> 
-          <View style={styles.main__boxImg}>
-            <Image
-            source={require('../assets/profile.png')}
-            style={styles.main__img}
-            />
-          </View>
-          <View style={styles.content__body}>
-            <Text style={styles.main__textInfos}>Email: darlan@gmail.com</Text>
-            <Text style={styles.main__textInfos}>Nome: Darlan</Text>
-            <Text style={styles.main__textInfos}>Data de nascimento: 08/12/2000</Text>
-            <Text style={styles.main__textInfos}>Departamento: 11</Text>
-          </View>
-            <TouchableOpacity style={styles.main__button}>
-              <Text style={styles.button__text}>Sair</Text>
-            </TouchableOpacity>
-        </View>
-      </View>
-
-    </ScrollView>
+    <View style={styles.container}>
+      <Image
+        source={userData.profileImage ? { uri: userData.profileImage } : require('../assets/profile.png')}
+        style={styles.image}
+      />
+      <Text style={styles.text}>Nome: {userData.nome}</Text>
+      <Text style={styles.text}>Email: {userData.email}</Text>
+      <Button title="Sair" onPress={sair} />
+    </View>
   );
 }
 const styles = StyleSheet.create({
