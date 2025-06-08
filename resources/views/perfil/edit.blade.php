@@ -141,15 +141,6 @@
     <label>Data de Nascimento:</label><br>
     <input type="date" name="data_nascimento" value="{{ old('data_nascimento', $perfil->data_nascimento) }}"><br><br>
 
-    <label>Departamento:</label><br>
-    <input type="text" name="departamento" value="{{ old('departamento', $perfil->departamento) }}"><br><br>
-
-    <label>Supervisor:</label><br>
-    <input type="text" name="supervisor" value="{{ old('supervisor', $perfil->supervisor) }}"><br><br>
-
-    <label>Grupos:</label><br>
-    <input type="text" name="grupos" value="{{ old('grupos', $perfil->grupos) }}"><br><br>
-
     <button type="submit">Atualizar</button>
 </form>
 @endsection

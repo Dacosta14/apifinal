@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\firebaseConnectionController;
 use Kreait\Firebase\Auth as FirebaseAuth;
 
 Route::post('/firebase-login', function(Request $request, FirebaseAuth $auth) {
@@ -36,3 +37,5 @@ Route::post('/firebase-login', function(Request $request, FirebaseAuth $auth) {
 
 Route::resource('animais', AnimalController::class);
 Route::resource('perfil', PerfilController::class);
+
+Route::get('/', [firebaseConnectionController::class, 'index']);
