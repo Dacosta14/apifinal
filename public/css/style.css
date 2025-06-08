@@ -1,3 +1,6 @@
+* {
+  box-sizing:border-box
+}
 body {
     background-color: #000;
     color: #fff;
@@ -6,10 +9,30 @@ body {
     padding: 0;
 }
 
-.container {
-    max-width: 1200px;
+.container-semborda {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
     margin: 50px auto;
     text-align: center;
+    padding: 30px 12px;
+    border-radius: 10px;
+    gap: 20px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 30px 12px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px 0 #00d9ff;
+    gap: 10px;
 }
 
 
@@ -18,7 +41,7 @@ body {
     background: linear-gradient(90deg, #00d9ff, #c084fc);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 40px;
+    margin: 0;
 }
 
 .btn-add {
@@ -42,16 +65,27 @@ body {
 }
 
 .card-list {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45%, 250px));
     gap: 30px;
+    width: 100%;
     justify-content: center;
+    margin: 30px 0 0 0;
 }
 
 .card {
-    width: 250px; /* Opcional, mas recomendado para padrão visual */
+    display: flex;
+    width: 100%; /* Opcional, mas recomendado para padrão visual */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
 }
-
+.card p {
+    margin: 0
+}
+.card h2 {
+    margin: 0;
+}
 .card:hover {
     transform: scale(1.02);
 }
@@ -63,10 +97,13 @@ body {
 }
 
 .actions {
-    margin-top: 15px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     gap: 15px;
+    width: 100%;
+    height: 30px;
+    margin: 10px 0 0 0;
 }
 
 .actions a,
@@ -75,6 +112,8 @@ body {
     border: 1px solid #00d9ff;
     color: #00d9ff;
     padding: 5px 15px;
+    width: 47%;
+    height: 100%;
     border-radius: 8px;
     cursor: pointer;
     text-decoration: none;
@@ -86,14 +125,19 @@ body {
     background-color: #00d9ff;
     color: #000;
 }
-
+.form-delete {
+    height: 100%;
+    width: 47%;
+}
+.form-delete button {
+    width: 100%;
+}
 .form {
     background-color: #111;
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 0 15px #00d9ff;
-    max-width: 500px;
-    margin: 0 auto;
+    width: 100%;
 }
 
 .form-group {

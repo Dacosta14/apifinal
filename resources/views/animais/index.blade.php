@@ -26,7 +26,7 @@
 
                 <div class="actions">
                     <a href="{{ route('animais.edit', $animal->id) }}" class="btn-edit">✏️ Editar</a>
-                    <form action="{{ route('animais.destroy', $animal->id) }}" method="POST">
+                    <form class="form-delete" action="{{ route('animais.destroy', $animal->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" onclick="return confirm('Tem certeza?')" class="btn-delete">🗑️ Excluir</button>

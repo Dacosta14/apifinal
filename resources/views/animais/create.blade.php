@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-semborda">
     <h1 class="title">➕ Cadastrar <span>Animal</span></h1>
 
     <form action="{{ route('animais.store') }}" method="POST" class="form">

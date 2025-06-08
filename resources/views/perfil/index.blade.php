@@ -42,18 +42,20 @@
 
     .grid-perfis {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(100%, 400px));
         gap: 30px;
     }
 
     .perfil-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         background-color: #111;
         border-radius: 20px;
         box-shadow: 0 0 15px #00BFFF;
+        width: 100%;
         padding: 25px;
-        display: flex;
         gap: 20px;
-        align-items: flex-start;
         color: white;
     }
 
@@ -70,6 +72,7 @@
         flex: 1;
         display: flex;
         flex-direction: column;
+        width: 100%;
         gap: 15px;
     }
 
@@ -92,9 +95,14 @@
         margin-top: 15px;
         display: flex;
         gap: 15px;
-        flex-wrap: wrap;
+        width: 100%;
     }
-
+    .perfil-actions a {
+        width: 48%;
+    }
+    .perfil-actions form {
+      width: 48%;
+    }
     .perfil-actions a button,
     .perfil-actions form button {
         background-color: transparent;
@@ -102,6 +110,7 @@
         border-radius: 12px;
         padding: 10px 25px;
         color: #00BFFF;
+        width: 100%;
         font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease;

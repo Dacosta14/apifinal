@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-semborda">
     <h1 class="title">✏️ Editar <span>Animal</span></h1>
-     <a href="{{ route('animais.create') }}" class="btn-add">+ Cadastrar Novo</a>
 
     <form action="{{ route('animais.update', $animal->id) }}" method="POST" class="form">
         @csrf

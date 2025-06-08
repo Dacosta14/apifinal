@@ -15,7 +15,10 @@
     }
 
     form {
+        display: flex;
+        flex-direction: column;
         max-width: 600px;
+        width: 100%;
         margin: 0 auto 50px auto;
         background-color: #111;
         padding: 30px 40px;
@@ -23,11 +26,11 @@
         box-shadow: 0 0 20px #00BFFF;
         color: white;
         font-family: 'Poppins', sans-serif;
+        gap: 4px
     }
 
     label {
         display: block;
-        margin-bottom: 8px;
         font-weight: 600;
         color: #00BFFF;
         user-select: none;
@@ -37,6 +40,7 @@
     input[type="email"],
     input[type="date"],
     input[type="file"] {
+        margin: 0 0 12px 0;
         width: 100%;
         padding: 10px 12px;
         border-radius: 12px;
@@ -44,7 +48,6 @@
         background-color: #222;
         color: white;
         font-size: 1rem;
-        margin-bottom: 20px;
         transition: border-color 0.3s ease;
     }
 
@@ -59,6 +62,7 @@
 
     button[type="submit"] {
         display: block;
+        margin: 12px 0 0 0;
         width: 100%;
         background-color: transparent;
         border: 2px solid #00BFFF;
@@ -73,6 +77,7 @@
     }
 
     button[type="submit"]:hover {
+
         background-color: #00BFFF;
         color: #000;
         box-shadow: 0 0 15px #00BFFF;
