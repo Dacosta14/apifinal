@@ -164,11 +164,11 @@
                             <button type="button">Editar</button>
                         </a>
 
-                        <form action="{{ route('perfil.destroy', $p->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" onclick="return confirm('Tem certeza?')">Logout</button>
-                        </form>
+                        <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+    @csrf
+    <button type="submit" onclick="return confirm('Quer realmente sair?')">Sair</button>
+</form>
+
                     </div>
                 </div>
             </div>

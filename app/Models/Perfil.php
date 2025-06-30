@@ -2,27 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 
-class Perfil extends Model
+class Perfil extends Authenticatable
 {
-    // Corrige o nome da tabela
+    use HasApiTokens, Notifiable;
+    // Força o nome da tabela para "perfis"
     protected $table = 'perfis';
-
     protected $fillable = [
-        'foto',
-        'nome',
-        'email',
-        'data_nascimento',
-        'departamento',
-        'supervisor',
-        'grupos',
+        'nome', 'email', 'password', 'data_nascimento', 'departamento', 'supervisor', 'grupos', 'foto'
     ];
 
-    protected $appends = ['foto_url'];
-
-    public function getFotoUrlAttribute()
-    {
-        return $this->foto ? url('fotos/' . $this->foto) : null;
-    }
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 }

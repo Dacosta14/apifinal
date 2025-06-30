@@ -99,6 +99,10 @@
     <label for="email">Email:</label>
     <input type="email" name="email" id="email" value="{{ old('email') }}">
 
+<label for="password">Senha:</label>
+<input type="password" name="password" id="password" required>
+
+    
     <label for="data_nascimento">Data de Nascimento:</label>
     <input type="date" name="data_nascimento" id="data_nascimento" value="{{ old('data_nascimento') }}">
 

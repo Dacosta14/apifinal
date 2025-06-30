@@ -17,6 +17,8 @@
 
         <button type="submit">Entrar</button>
     </form>
+    <p>Não tem uma conta? <a href="{{ route('register.form') }}">Cadastre-se aqui</a></p>
+
 
     <p id="mensagem"></p>
 </div>
@@ -42,7 +44,7 @@
 
         if (data.token) {
             localStorage.setItem('token', data.token);
-            window.location.href = '/dashboard'; // redireciona se quiser
+            window.location.href = '/perfil'; // redireciona se quiser
         }
     });
 </script>

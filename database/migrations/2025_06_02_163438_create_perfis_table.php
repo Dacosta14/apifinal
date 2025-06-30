@@ -7,17 +7,19 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
 public function up(): void
 {
-    Schema::create('perfis', function (Blueprint $table) {
+ Schema::create('perfis', function (Blueprint $table) {
         $table->id();
-        $table->string('foto')->nullable();
         $table->string('nome');
         $table->string('email')->unique();
+        $table->string('password'); // essencial para login!
         $table->date('data_nascimento')->nullable();
-
+        $table->string('departamento')->nullable();
+        $table->string('supervisor')->nullable();
+        $table->string('grupos')->nullable();
+        $table->string('foto')->nullable();
         $table->timestamps();
     });
 }
-
 
     public function down(): void
     {

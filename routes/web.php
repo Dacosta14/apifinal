@@ -2,51 +2,28 @@
 
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\PerfilController;
-use App\Http\Controllers\firebaseConnectionController;
-use Kreait\Firebase\Auth as FirebaseAuth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AuthController;
 
-Route::post('/firebase-login', function(Request $request, FirebaseAuth $auth) {
-    $token = $request->input('token');
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.form');
+Route::post('/register', [AuthController::class, 'register'])->name('register.submit');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    try {
-        $verifiedIdToken = $auth->verifyIdToken($token);
-        $firebaseUid = $verifiedIdToken->claims()->get('sub');
 
-        // Tente achar usuário local pelo Firebase UID
-        $user = \App\Models\User::where('firebase_uid', $firebaseUid)->first();
-
-        if (!$user) {
-            // Criar usuário local novo
-            $firebaseUser = $auth->getUser($firebaseUid);
-            $user = \App\Models\User::create([
-                'name' => $firebaseUser->displayName ?? 'Sem Nome',
-                'email' => $firebaseUser->email,
-                'firebase_uid' => $firebaseUid,
-                // outros campos que quiser
-            ]);
-        }
 Route::get('/login', function () {
-    return view('auth.login');
+    return view('login'); // sua view de login
 })->name('login');
 
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register');
+Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
+Route::resource('perfil', PerfilController::class)->middleware('auth');
 
+Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 Route::get('/dashboard', function () {
-    return view('dashboard'); // Crie essa view ou redirecione pra onde quiser
-})->name('dashboard');
+    return 'Bem-vindo ao dashboard!';
+})->middleware('auth');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-        // Loga usuário no Laravel
-        auth()->login($user);
-
-        return response()->json(['success' => true]);
-    } catch (\Throwable $e) {
-        return response()->json(['success' => false, 'message' => $e->getMessage()]);
-    }
-});
 
 Route::resource('animais', AnimalController::class);
 Route::resource('perfil', PerfilController::class);
 
-Route::get('/', [firebaseConnectionController::class, 'index']);
