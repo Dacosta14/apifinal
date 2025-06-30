@@ -12,3 +12,6 @@ link pra foto rodar - php artisan storage:link
 php artisan serve
 
 DATABSE -- bdAnimal
+composer require laravel/sanctum
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+php artisan migrate

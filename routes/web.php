@@ -25,6 +25,17 @@ Route::post('/firebase-login', function(Request $request, FirebaseAuth $auth) {
                 // outros campos que quiser
             ]);
         }
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
+
+Route::get('/dashboard', function () {
+    return view('dashboard'); // Crie essa view ou redirecione pra onde quiser
+})->name('dashboard');
 
         // Loga usuário no Laravel
         auth()->login($user);

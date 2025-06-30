@@ -6,6 +6,7 @@ use App\Models\Perfil;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+
 class PerfilController extends Controller
 {
     // 🔍 Listar todos os perfis
@@ -14,6 +15,15 @@ class PerfilController extends Controller
         $perfil = Perfil::all();
         return view('perfil.index', compact('perfil'));
     }
+      use HasApiTokens, HasFactory, Notifiable;
+
+    protected $fillable = [
+        'nome', 'email', 'password', 'data_nascimento', 'departamento', 'supervisor', 'grupos', 'foto'
+    ];
+
+    protected $hidden = [
+        'password',
+    ];
 
     // ➕ Mostrar o formulário de criação
     public function create()

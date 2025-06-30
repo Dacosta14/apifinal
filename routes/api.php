@@ -4,6 +4,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FirebaseAuthController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\Api\AuthController;
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
 
 Route::post('/perfis', [PerfilController::class, 'store']);
 
