@@ -1,17 +1,28 @@
-ROTA -- http://127.0.0.1:8000/animais
+# 🐾 Sistema de Animais (Laravel)
 
-ROTA -- http://127.0.0.1:8000/perfil
+## 📌 Sobre o projeto
+Aplicação web desenvolvida em Laravel com foco na visualização e interação com animais disponíveis, funcionando como uma plataforma estilo blog.
 
-arquivo env.txt precia ser editado para .env
- 
-npm i
+Os usuários podem visualizar os animais cadastrados e acessar seu perfil.
 
-composer install
+---
 
-php artisan migrate 
+## 🚀 Funcionalidades
+- Listagem de animais disponíveis para adoção
+- Visualização de perfil de usuário
+- Exibição de informações detalhadas dos animais
+- Interface simples e intuitiva
 
-link pra foto rodar - php artisan storage:link
+---
 
-php artisan serve
+## 🛠️ Tecnologias utilizadas
+- PHP (Laravel)
+- Blade (templates)
+- MySQL
 
-DATABSE -- bdAnimal
+---
+
+## 📍 Rotas principais
+- `/animais` → Listagem de animais  
+- `/perfil` → Perfil do usuário  
+
